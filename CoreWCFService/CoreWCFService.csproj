@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>true</ImplicitUsings>
+    <UserSecretsId>ba85ba37-ec0d-43a0-ac61-15408b50f6fc</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+  </PropertyGroup>
+  <ItemGroup>
+    <Using Include="CoreWCF" />
+    <Using Include="CoreWCF.Configuration" />
+    <Using Include="CoreWCF.Channels" />
+    <Using Include="CoreWCF.Description" />
+    <Using Include="System.Runtime.Serialization " />
+    <Using Include="CoreWCFService" />
+    <Using Include="Microsoft.Extensions.DependencyInjection.Extensions" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="CoreWCF.Http" Version="1.*" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
+  </ItemGroup>
+</Project>
