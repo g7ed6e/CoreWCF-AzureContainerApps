@@ -11,7 +11,7 @@ app.UseServiceModel(serviceBuilder =>
 {
     serviceBuilder.AddService<Service>(options =>
     {
-        
+        options.BaseAddresses.Add(new Uri("https://localhost"));
     });
     serviceBuilder.AddServiceEndpoint<Service, IService>(new BasicHttpBinding(BasicHttpSecurityMode.Transport), "/Service.svc");
     var serviceMetadataBehavior = app.Services.GetRequiredService<ServiceMetadataBehavior>();
