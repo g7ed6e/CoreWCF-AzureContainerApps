@@ -14,6 +14,7 @@ app.UseServiceModel(serviceBuilder =>
         options.BaseAddresses.Add(new Uri("https://localhost"));
     });
     serviceBuilder.AddServiceEndpoint<Service, IService>(new BasicHttpBinding(BasicHttpSecurityMode.Transport), "/Service.svc");
+    serviceBuilder.AddServiceEndpoint<Service, IService>(new BasicHttpBinding(), "/Service.svc");
     var serviceMetadataBehavior = app.Services.GetRequiredService<ServiceMetadataBehavior>();
     serviceMetadataBehavior.HttpGetEnabled = serviceMetadataBehavior.HttpsGetEnabled = true;
 });
@@ -22,7 +23,7 @@ app.MapGet("/", async context =>
 {
     foreach (var (key, value) in context.Request.Headers)
     {
-        await context.Response.WriteAsync($"{key}:{value}");
+        await context.Response.WriteAsync($"{key}:{value}\n");
     }
 });
 
