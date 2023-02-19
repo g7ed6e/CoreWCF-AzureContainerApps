@@ -15,6 +15,6 @@ app.UseServiceModel(serviceBuilder =>
     serviceMetadataBehavior.HttpGetEnabled = serviceMetadataBehavior.HttpsGetEnabled = true;
 });
 
-app.MapGet("/", context => context.Response.WriteAsync("Hello world"));
+app.MapGet("/", context => context.Response.WriteAsync("Hello world !"));
 
 app.Run();
