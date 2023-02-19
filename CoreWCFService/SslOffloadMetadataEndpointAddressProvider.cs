@@ -6,7 +6,7 @@ public class SslOffloadMetadataEndpointAddressProvider : IMetadataEndpointAddres
 {
     public Uri GetEndpointAddress(HttpRequest request)
     {
-        return new Uri("https://corewcf-service.bravesky-516d42c4.francecentral.azurecontainerapps.io/Service.svc");
+        //return new Uri("https://corewcf-service.bravesky-516d42c4.francecentral.azurecontainerapps.io/Service.svc");
         const string delimiter = "://";
         string scheme = request.Headers.TryGetValue("X-Forwarded-Proto", out var value) 
             ? value
