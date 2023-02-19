@@ -9,12 +9,21 @@ var app = builder.Build();
 
 app.UseServiceModel(serviceBuilder =>
 {
-    serviceBuilder.AddService<Service>();
-    serviceBuilder.AddServiceEndpoint<Service, IService>(new BasicHttpBinding(), "/Service.svc");
+    serviceBuilder.AddService<Service>(options =>
+    {
+        
+    });
+    serviceBuilder.AddServiceEndpoint<Service, IService>(new BasicHttpBinding(BasicHttpSecurityMode.Transport), "/Service.svc");
     var serviceMetadataBehavior = app.Services.GetRequiredService<ServiceMetadataBehavior>();
     serviceMetadataBehavior.HttpGetEnabled = serviceMetadataBehavior.HttpsGetEnabled = true;
 });
 
-app.MapGet("/", context => context.Response.WriteAsync("Hello world !"));
+app.MapGet("/", async context =>
+{
+    foreach (var (key, value) in context.Request.Headers)
+    {
+        await context.Response.WriteAsync($"{key}:{value}");
+    }
+});
 
 app.Run();
