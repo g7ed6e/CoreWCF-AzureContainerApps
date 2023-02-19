@@ -2,7 +2,8 @@
 
 builder.Services.AddServiceModelServices();
 builder.Services.AddServiceModelMetadata();
-builder.Services.AddSingleton<IServiceBehavior, UseRequestHeadersForMetadataAddressBehavior>();
+builder.Services.AddSingleton<IServiceBehavior, MetadataEndpointAddressServiceBehavior>();
+builder.Services.AddSingleton<IMetadataEndpointAddressProvider, SslOffloadMetadataEndpointAddressProvider>();
 
 var app = builder.Build();
 
